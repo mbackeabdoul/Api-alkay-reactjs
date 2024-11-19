@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './MonComposant.css'; // Import du fichier CSS
+import './MonComposant.css';
 
 function MonComposantListesDePays() {
   const [donnees, setDonnees] = useState(null);
@@ -8,21 +8,22 @@ function MonComposantListesDePays() {
   const [chargement, setChargement] = useState(true);
 
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all')
-      .then(response => {
+    axios
+      .get('https://restcountries.com/v3.1/all')
+      .then((response) => {
         setDonnees(response.data);
         setChargement(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Une erreur est survenue :', error);
         setChargement(false);
       });
   }, []);
 
-  const donneesFiltrees = donnees?.filter(donnee =>
+  const donneesFiltrees = donnees?.filter((donnee) =>
     donnee.name.common.toLowerCase().includes(recherche.toLowerCase())
   );
-     // Vérifie ndax le mode chargement est activé. Si oui, daniouy afficher un loader.
+
   if (chargement) {
     return (
       <div className="chargement">
@@ -34,7 +35,7 @@ function MonComposantListesDePays() {
 
   return (
     <div className="conteneur">
-      {/*Barre de recherche bi */}
+      {/* <h1 className='font-size: 0.75rem'>Liste des pays</h1> */}
       <div className="barre-recherche">
         <input
           type="text"
@@ -55,8 +56,16 @@ function MonComposantListesDePays() {
                 className="carte-image"
               />
               <h3 className="carte-titre">{donnee.name.common}</h3>
-              <p className="carte-texte">Population : {donnee.population.toLocaleString()}</p>
+              <p className="carte-texte">Capitale : {donnee.capital?.[0] || 'N/A'}</p>
+              <p className="carte-texte">
+                Population : {donnee.population.toLocaleString()}
+              </p>
               <p className="carte-texte">Région : {donnee.region}</p>
+              <p className="carte-texte">Sous-région : {donnee.subregion || 'N/A'}</p>
+              <p className="carte-texte">
+                Superficie : {donnee.area.toLocaleString()} km² 
+                {/* Afficher superficie wu du pays en kilomètres carrés ba parei Formater le nombre pour être lisible. */}
+              </p>
             </div>
           ))
         ) : (

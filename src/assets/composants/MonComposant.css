@@ -1,87 +1,90 @@
-/* suniou Conteneur principal */
+/*Suniou Conteneur principal */
 .conteneur {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 1200px;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Barre de recherche bi */
-  .barre-recherche {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-recherche {
-    padding: 10px;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Grille cartes yi*/
-  .grille {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px;
-    justify-content: center;
-
-  }
-
-/* responsiviter */
-
-  @media (max-width: 768px) {
-    .grille {
-      grid-template-columns: repeat(2, 1fr); /* 2 colonnes pour les petits écrans */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .grille {
-      grid-template-columns: 1fr; /* 1 colonne pour les très petits écrans */
-    }
-  }
-  
-  /* Carte */
-  .carte {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
 }
 
+/* Barre de recherche bi*/
+.barre-recherche {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-recherche {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Grille des cartes */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Stylou cartes yi */
+.carte {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carte:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image dans la carte */
 .carte-image {
-  width: 100px;
+  width: 120px;
   height: auto;
   object-fit: contain;
   margin-bottom: 15px;
+  border-radius: 5px;
 }
-  
-  .carte-titre {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .carte-texte {
-    font-size: 14px;
-    margin: 5px 0;
-  }
-  
-  /* Chargement... */
-  .chargement {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  /* amul résultat */
-  .aucun-resultat {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    grid-column: 1 / -1;
+
+/* Titre de la carte */
+.carte-titre {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
 }
-  
+
+/* Texte de la carte */
+.carte-texte {
+  font-size: 14px;
+  color: #555;
+}
+
+/* amul résultat trouvé */
+.aucun-resultat {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}
+
+/* Loader bi pour de chargement */
+.chargement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
