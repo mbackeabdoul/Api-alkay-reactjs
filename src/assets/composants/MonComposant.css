@@ -1,0 +1,87 @@
+/* suniou Conteneur principal */
+.conteneur {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Barre de recherche bi */
+  .barre-recherche {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-recherche {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Grille cartes yi*/
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    justify-content: center;
+
+  }
+
+/* responsiviter */
+
+  @media (max-width: 768px) {
+    .grille {
+      grid-template-columns: repeat(2, 1fr); /* 2 colonnes pour les petits écrans */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grille {
+      grid-template-columns: 1fr; /* 1 colonne pour les très petits écrans */
+    }
+  }
+  
+  /* Carte */
+  .carte {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.carte-image {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+  
+  .carte-titre {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .carte-texte {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  /* Chargement... */
+  .chargement {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* amul résultat */
+  .aucun-resultat {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    grid-column: 1 / -1;
+}
+  
