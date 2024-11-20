@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './MonComposant.css';
 
@@ -20,9 +21,12 @@ function MonComposantListesDePays() {
       });
   }, []);
 
+  // Filtrage des pays en fonction de la recherche saisie
   const donneesFiltrees = donnees?.filter((donnee) =>
     donnee.name.common.toLowerCase().includes(recherche.toLowerCase())
   );
+
+    // dafay Afficher benn message de chargement bu nekkee les données sont en cours de récupération
 
   if (chargement) {
     return (
@@ -33,15 +37,16 @@ function MonComposantListesDePays() {
     );
   }
 
+    // Rendu wu composant principal bi
+
   return (
     <div className="conteneur">
-      {/* <h1 className='font-size: 0.75rem'>Liste des pays</h1> */}
       <div className="barre-recherche">
         <input
           type="text"
           placeholder="Rechercher un pays..."
           value={recherche}
-          onChange={(e) => setRecherche(e.target.value)}
+          onChange={(e) => setRecherche(e.target.value)} // Mise à jour de la recherche en temps réel
           className="input-recherche"
         />
       </div>
@@ -50,22 +55,18 @@ function MonComposantListesDePays() {
         {donneesFiltrees?.length > 0 ? (
           donneesFiltrees.map((donnee, index) => (
             <div key={index} className="carte">
+                {/* Affichage du drapeau yi */}
+
               <img
                 src={donnee.flags.png}
                 alt={`Drapeau de ${donnee.name.common}`}
                 className="carte-image"
               />
+               {/* turu pays yi */}
               <h3 className="carte-titre">{donnee.name.common}</h3>
-              <p className="carte-texte">Capitale : {donnee.capital?.[0] || 'N/A'}</p>
-              <p className="carte-texte">
-                Population : {donnee.population.toLocaleString()}
-              </p>
-              <p className="carte-texte">Région : {donnee.region}</p>
-              <p className="carte-texte">Sous-région : {donnee.subregion || 'N/A'}</p>
-              <p className="carte-texte">
-                Superficie : {donnee.area.toLocaleString()} km² 
-                {/* Afficher superficie wu du pays en kilomètres carrés ba parei Formater le nombre pour être lisible. */}
-              </p>
+              <Link to={`/pays/${donnee.name.common}`} className="carte-bouton">
+                Voir Détail
+              </Link>
             </div>
           ))
         ) : (
