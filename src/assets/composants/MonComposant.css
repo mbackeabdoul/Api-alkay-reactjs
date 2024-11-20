@@ -1,12 +1,14 @@
-/*Suniou Conteneur principal */
+/* Suniou Conteneur principal */
 .conteneur {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
+  max-width: 1200px;
+  padding: 0 10px; 
 }
 
-/* Barre de recherche bi*/
+/* Barre de recherche bi */
 .barre-recherche {
   margin-bottom: 20px;
   text-align: center;
@@ -23,9 +25,10 @@
 /* Grille des cartes */
 .grille {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes par défaut */
   gap: 16px;
   margin: 20px;
+  width: 100%; 
 }
 
 /* buttton cartes
@@ -48,7 +51,7 @@
 .carte {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -101,4 +104,52 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
+}
+
+/* --- Responsivité --- */
+
+/* Pour les écrans de taille moyenne ( maanam tablettes) */
+@media (max-width: 1024px) {
+  .grille {
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+  }
+
+  .input-recherche {
+    width: 250px; 
+  }
+}
+
+/* Pour les écrans de petite taille (maaanaam téléphones) */
+@media (max-width: 768px) {
+  .grille {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .input-recherche {
+    width: 200px; 
+    font-size: 14px; 
+  }
+
+  .carte {
+    padding: 15px; 
+  }
+
+  .carte-titre {
+    font-size: 16px;
+  }
+
+  .carte-image {
+    width: 100px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .grille {
+    grid-template-columns: 1fr; 
+  }
+
+  .input-recherche {
+    width: 100%; 
+  }
 }
