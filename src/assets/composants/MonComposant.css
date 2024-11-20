@@ -31,62 +31,74 @@
   width: 100%; 
 }
 
-/* buttton cartes
-.carte-bouton {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-} */
-
-.carte-bouton:hover {
-  background-color: #0056b3;
-}
-
 /* Stylou cartes yi */
 .carte {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Bordures plus douces */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombres modernes */
+  background: linear-gradient(145deg, #ffffff, #f1f1f1); /* Fond dégradé léger */
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px; /* Uniformiser la hauteur */
+  justify-content: space-between;
 }
 
 .carte:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Zoom subtil au survol */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Ombres plus prononcées */
 }
 
-/* Image dans la carte */
+/* Image améliorée dans la carte */
 .carte-image {
   width: 120px;
   height: auto;
-  object-fit: contain;
+  object-fit: cover; /* Recadrer pour un aspect propre */
   margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 10%; 
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  transition: transform 0.3s ease;
 }
 
-/* Titre de la carte */
+.carte-image:hover {
+  transform: rotate(5deg) scale(1.1); 
+}
+
+/* Titre amélioré wu carte bi */
 .carte-titre {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #333;
+  text-transform: capitalize; 
 }
 
-/* Texte de la carte */
+/* Texte carte bi encore amélioré */
 .carte-texte {
   font-size: 14px;
   color: #555;
+  line-height: 1.6; 
+  padding: 0 10px; 
+}
+
+.carte-bouton {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px; /* Bouton arrondi */
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.carte-bouton:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px); /* Effet de flottement au survol */
 }
 
 /* amul résultat trouvé */
@@ -117,6 +129,10 @@
   .input-recherche {
     width: 250px; 
   }
+
+  .carte {
+    height: 230px; 
+  }
 }
 
 /* Pour les écrans de petite taille (maaanaam téléphones) */
@@ -132,6 +148,7 @@
 
   .carte {
     padding: 15px; 
+    height: 210px; 
   }
 
   .carte-titre {
@@ -143,7 +160,6 @@
   }
 }
 
-
 @media (max-width: 480px) {
   .grille {
     grid-template-columns: 1fr; 
@@ -151,5 +167,9 @@
 
   .input-recherche {
     width: 100%; 
+  }
+
+  .carte {
+    height: auto; 
   }
 }
