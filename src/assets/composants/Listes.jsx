@@ -4,20 +4,20 @@ import axios from 'axios';
 import './MonComposant.css';
 
 function MonComposantListesDePays() {
-  const [donnees, setDonnees] = useState(null); // État pour stocker les données des pays
-  const [recherche, setRecherche] = useState(''); // État pour la barre de recherche
-  const [chargement, setChargement] = useState(true); // État pour indiquer si les données sont en cours de chargement
+  const [donnees, setDonnees] = useState(null); // État bi pour stocker les données des pays
+  const [recherche, setRecherche] = useState(''); // État wu barre de recherche
+  const [chargement, setChargement] = useState(true); // État biy indiquer si les données sont en cours de chargement
 
-  // Récupération des données des pays depuis l'API au chargement du composant
+  // Récupération wu donnéey pays yi depuis l'API au chargement du composant
   useEffect(() => {
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
         setDonnees(response.data); // Stockage des données dans l'état
-        setChargement(false); // Indique que le chargement est terminé
+        setChargement(false); // dfay wanei si le chargement est terminé
       })
       .catch((error) => {
-        console.error('Une erreur est survenue :', error); // Gestion des erreurs en cas de problème avec l'API
+        console.error('Une erreur est survenue :', error); // Gestion des erreurs en cas de problème ak l'API
         setChargement(false); // Terminer le chargement même en cas d'erreur
       });
   }, []);
@@ -27,7 +27,7 @@ function MonComposantListesDePays() {
     donnee.name.common.toLowerCase().includes(recherche.toLowerCase())
   );
 
-  // Afficher un message de chargement si les données ne sont pas encore disponibles
+  // Afficher benn message de chargement bu nekkee les données ne sont pas encore disponibles
   if (chargement) {
     return (
       <div className="chargement">
@@ -37,27 +37,26 @@ function MonComposantListesDePays() {
     );
   }
 
-  // Rendu du composant principal
+  // Rendu wu composant principal bi
   return (
     <div className="conteneur">
-      {/* Barre de recherche pour filtrer les pays */}
       <div className="barre-recherche">
         <input
           type="text"
-          placeholder="Rechercher un pays..." // Texte par défaut dans le champ de recherche
+          placeholder="Rechercher un pays..." 
           value={recherche} // Lier la valeur à l'état
-          onChange={(e) => setRecherche(e.target.value)} // Mise à jour de l'état à chaque saisie
+          onChange={(e) => setRecherche(e.target.value)} // Mise à jour l'état bi à chaque saisie
           className="input-recherche"
         />
       </div>
 
-      {/* Grille affichant les cartes des pays */}
+      {/* Grille afficher les cartes des pays */}
       <div className="grille">
         {donneesFiltrees?.length > 0 ? (
           donneesFiltrees.map((donnee, index) => (
-            // Rendre la carte entière cliquable avec Link
+            // pour carte bi yeipp cliquable
             <Link
-              to={`/pays/${donnee.name.common}`} // Lien vers la page des détails du pays
+              to={`/pays/${donnee.name.common}`} // Lien bi jeum ci la page des détails du pays
               key={index}
               className="carte-lien"
             >
@@ -65,12 +64,12 @@ function MonComposantListesDePays() {
                 {/* Affichage du drapeau du pays */}
                 <img
                   src={donnee.flags.png}
-                  alt={`Drapeau de ${donnee.name.common}`} // Texte alternatif pour l'image
+                  alt={`Drapeau de ${donnee.name.common}`}
                   className="carte-image"
                 />
                 {/* Affichage du nom du pays */}
                 <h3 className="carte-titre">{donnee.name.common}</h3>
-                {/* Bouton "Voir Détail" qui reste cliquable */}
+                {/* Bouton "Voir Détail" bi tamit reste cliquable */}
                 <Link
                   to={`/pays/${donnee.name.common}`} // Lien pour voir plus de détails
                   className="carte-bouton"
@@ -82,7 +81,7 @@ function MonComposantListesDePays() {
             </Link>
           ))
         ) : (
-          // Message affiché si aucun résultat n'est trouvé
+          // Message biy affiché si aucun résultat n'est trouvé
           <p className="aucun-resultat">Aucun pays trouvé.</p>
         )}
       </div>
